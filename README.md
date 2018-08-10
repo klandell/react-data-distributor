@@ -1,10 +1,14 @@
 React Data Distributor
 =====
-TODO: ...
+An minimalist and unopinionated framework for distributing static data to React components.\
+[![npm version](https://badge.fury.io/js/react-data-distributor.svg)](https://badge.fury.io/js/react-data-distributor)
+[![dependencies Status](https://david-dm.org/klandell/react-data-distributor/status.svg)](https://david-dm.org/klandell/react-data-distributor)
+
+React Data Distributor is lightweight, coming in at 2.25KB transpiled, minified, and gzipped. It is powerful tool for translating, theming, content distribution, and is the perfect tool when complex state management libraries are overkill.  It has no dependencies except for a peer dependency on React >= 16.3.
 
 ## Install
 Install via your favorite node dependency manager
-`yarn add react-data-distributor`
+`yarn add react-data-distributor`\
 `npm install react-data-distributor`
 
 ## API
