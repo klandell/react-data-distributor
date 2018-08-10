@@ -2,9 +2,11 @@ module.exports = {
   context: __dirname,
   entry: './src/index.js',
   mode: 'development',
+  devtool: false,
   output: {
     path: `${__dirname}/dist`,
     filename: 'index.js',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [{
@@ -17,6 +19,6 @@ module.exports = {
     }],
   },
   externals: {
-    react: 'React',
+    react: 'react',
   },
 };
