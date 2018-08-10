@@ -1,20 +1,28 @@
-React-Translator
+React Data Distributor
 =====
-IN PROGRESS!
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem nulla, dignissim sit amet ipsum elementum, molestie volutpat diam. Praesent eleifend sapien fringilla leo auctor mollis. Cras a ipsum quam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla eleifend, enim sed laoreet laoreet, neque eros pharetra arcu, sed pharetra nulla leo a mauris. Sed at ligula imperdiet, dignissim eros vel, porta neque. Duis dictum, augue quis efficitur ornare, ipsum dui fermentum nisi, vel maximus nunc elit non urna. Aliquam fringilla iaculis lectus, quis malesuada neque luctus vel. Vivamus porta ullamcorper gravida.
+TODO: ...
 
 ## Install
+Install via your favorite node dependency manager
+`yarn add react-data-distributor`
+`npm install react-data-distributor`
 
 ## API
+TODO: ...
 
 ## Example
-```
+Below is a real world example using react-data-distributor to provide a simple
+translation mechanism to a React app.
+
+### Create the Distributor
+```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Distributor } from 'react-data-distributor';
 import App from './app';
 
+// define a translations object, that maps
+// keywords to phrases in our target languages
 const translations = {
   en: {
     lang: 'english',
@@ -24,16 +32,36 @@ const translations = {
   },
 };
 
-const locale = navigator.language.split('-')[0];
+// extract the user's language settings from the navigator,
+// defaulting to english if we couldn't find it.
+let language = (typeof navigator !== 'undefined' && (
+  navigator.languages ? navigator.languages[0] : navigator.language
+)) || 'en';
 
+// the language tag that the user holds might be more specific than
+// what we support in our translations, i.e. en-US. In that case,
+// try to find a match using the first part of the language tag.
+// fall back to english if we still can't find a match.
+if (!translations[language]) {
+  const simplifiedLangTag = language.split('-')[0];
+  language = translations[simplifiedLangTag] ? simplifiedLangTag : 'en';
+}
+
+// define any formatters that we want to use on our data
 const formatters = {
-  allCaps: s => s.toUpperCase(),
+  capitalize: (str) => {
+    const words = (str || '').split(' ');
+    return words.map(w => `${w.substr(0, 1).toUpperCase()}${w.slice(1)}`).join(' ');
+  },
 };
 
+// render the application with Distributor somewhere near the top of component
+// hierarchy like you would with Redux. It might make sense to instead have multiple
+// distributors at the page level, depending on the situation.
 ReactDOM.render((
   <Distributor
     data={translations}
-    selector={locale}
+    selector={language}
     formatters={formatters}
   >
     <App />
@@ -41,13 +69,20 @@ ReactDOM.render((
 ), document.getElementById('root'));
 ```
 
-```
+### Create the Customer
+```javascript
 import React from 'react';
 import { Customer as C } from 'react-data-distributor';
 
+// render your component using the render props pattern,
+// strings will be your data, subset via the top level
+// selector. Call value with an optional formatter function
+// to get a string representation of your value. Use the
+// rawValue property to access the actual value.
+// i.e. `strings.lang.rawValue`
 const Component = () => (
   <C render={strings => (
-    <div>{strings.lang.value('allCaps')}</div>
+    <div>{strings.lang.value('capitalize')}</div>
   )} />
 );
 
