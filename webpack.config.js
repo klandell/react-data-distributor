@@ -1,7 +1,7 @@
 module.exports = {
   context: __dirname,
   entry: './src/index.js',
-  mode: 'production',
+  mode: 'development',
   output: {
     path: `${__dirname}/dist`,
     filename: 'index.js',

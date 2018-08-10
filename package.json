@@ -2,7 +2,7 @@
   "name": "react-data-distributor",
   "version": "0.0.1",
   "description": "ADD DESCRIPTION",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "Kyle Landell <kyle.landell@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -25,6 +25,6 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "build": "webpack"
+    "prepare": "webpack"
   }
 }
