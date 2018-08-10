@@ -1,11 +1,14 @@
+// @flow
+import type { GenericFunction } from './flowTypes';
+
 // a simple memoization function, each time the
 // arguments change, the cache is reset
-const memoize = (fn) => {
+function memoize<T>(fn: GenericFunction<T>): GenericFunction<T> {
   let responseCache;
   let argumentCache = [];
   let firstCallDone = false;
 
-  return (...args) => {
+  return (...args: Array<mixed>) => {
     // check to see if the arguments changed,
     let doUpdateCache = false;
     if (firstCallDone) {
@@ -32,6 +35,6 @@ const memoize = (fn) => {
     }
     return responseCache;
   };
-};
+}
 
 export default memoize;

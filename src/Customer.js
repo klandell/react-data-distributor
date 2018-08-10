@@ -1,11 +1,15 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import { Consumer } from './SupplyChainContext';
+import type { Data } from './flowTypes';
 
-// render
+type Props = {
+  render: (Data) => React.Node,
+};
 
-const Customer = ({ render }) => (
+const Customer = ({ render }: Props) => (
   <Consumer>
-    {data => render(data)}
+    {(data: Data) => render(data)}
   </Consumer>
 );
 

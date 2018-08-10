@@ -1,22 +1,25 @@
-import React from 'react';
+// @flow
+/* eslint-disable no-mixed-operators, space-infix-ops */
+import * as React from 'react';
 import { Provider } from './SupplyChainContext';
 import memoize from './memoize';
 import prepareData from './prepareData';
+import type { Data, Formatters } from './flowTypes';
 
-/*
-selector: string,
-data: object, // eslint-disable-line react/forbid-prop-types
-formatters: objectOf(func),
-children: oneOfType([node, arrayOf(node)]).isRequired,
-*/
+type Props = {
+  selector?: string,
+  data?: Data,
+  formatters?: Formatters,
+  children: React.Node,
+};
 
 // create a memoized function to extract the relevant
 // data from the supplied data
-const getData = memoize(prepareData);
+const getData = memoize<Data>(prepareData);
 
 // a provider to pass data to the interested parties
 // via the react context api
-const Distributor = (props) => {
+const Distributor = (props: Props) => {
   const {
     selector,
     data,

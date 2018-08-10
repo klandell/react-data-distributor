@@ -1,4 +1,7 @@
+// @flow
 /* eslint-disable no-underscore-dangle */
+import type { Formatter, Formatters, IndexableClass } from './flowTypes';
+
 const _value = Symbol('value');
 const _formatters = Symbol('formatters');
 
@@ -6,14 +9,17 @@ const _formatters = Symbol('formatters');
  * Parcel provides a custom data type to allow
  * generic formatting to be done on the data value
  */
-class Parcel {
+class Parcel implements IndexableClass {
+  $key: Symbol;
+  $value: any;
+
   /**
    * Initializes the parcel
    *
    * @param {*} value the parcel value
    * @param {object} formatters an object of formatting functions
    */
-  constructor(value, formatters) {
+  constructor(value: any, formatters: Formatters) {
     this[_value] = value;
     this[_formatters] = formatters;
   }
@@ -23,7 +29,7 @@ class Parcel {
    *
    * @return the parcel value's in its original type
    */
-  get rawValue() {
+  get rawValue(): string | number {
     return this[_value];
   }
 
@@ -33,21 +39,12 @@ class Parcel {
    * @param {string} formatter a format function to apply
    * @return the formatted parcel value
    */
-  value(formatter) {
+  value(formatter: Formatter): any {
     if (formatter) {
-      const formatFn = this[_formatters][formatter] || this.toString.bind(this);
+      const formatFn = this[_formatters][formatter] || (s => `${s}`);
       return formatFn(this.rawValue);
     }
     return this.rawValue;
-  }
-
-  /**
-   * A toString method for the class
-   *
-   * @return the parcel value as a string
-   */
-  toString() {
-    return `${this[_value]}`;
   }
 }
 

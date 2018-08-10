@@ -1,10 +1,12 @@
+// @flow
 import Stack from './Stack';
 import Parcel from './Parcel';
+import type { Data, Formatters, RawData } from './flowTypes';
 
 // prepares the data by converting all of the values to
 // parcels, and extracting only the data that the user
 // is interested in, based on a selector
-const prepareData = (selector, data, formatters) => {
+const prepareData = (selector: string, data: RawData, formatters: Formatters): Data => {
   let selectedData = Object.assign({}, data);
   if (selector) {
     // if a selector has been defined, walk down the object

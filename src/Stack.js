@@ -1,4 +1,6 @@
+// @flow
 /* eslint-disable no-underscore-dangle */
+import type { IndexableClass } from './flowTypes';
 
 // declare a symbol to keep the items array private
 const _items = Symbol('items');
@@ -20,7 +22,9 @@ class EmptyStackError extends Error {
  * Stack provides a Last In First Out (LIFO) data type,
  * commonly known as a Stack.
  */
-class Stack {
+class Stack implements IndexableClass {
+  $key: Symbol;
+  $value: any;
   /**
    * Initializes the stack
    */
@@ -33,7 +37,7 @@ class Stack {
    *
    * @return true if the stack contains no items, false otherwise
    */
-  empty() {
+  empty(): boolean {
     return !this.size();
   }
 
@@ -43,7 +47,7 @@ class Stack {
    * @return the top item on the stack
    * @throws EmptyStackError if the stack is empty
    */
-  peek() {
+  peek(): any {
     if (this.empty()) throw new EmptyStackError();
     return this[_items][this.size() - 1];
   }
@@ -55,7 +59,7 @@ class Stack {
    * @return the item popped from the stack
    * @throws EmptyStackError if the stack is empty
    */
-  pop() {
+  pop(): any {
     if (this.empty()) throw new EmptyStackError();
     return this[_items].pop();
   }
@@ -66,7 +70,7 @@ class Stack {
    * @param {*} item the item to push onto the stack
    * @return the item pushed onto the stack
    */
-  push(item) {
+  push(item: any): any {
     this[_items].push(item);
     return item;
   }
@@ -76,7 +80,7 @@ class Stack {
    *
    * @return the number of items in the stack
    */
-  size() {
+  size(): number {
     return this[_items].length;
   }
 }

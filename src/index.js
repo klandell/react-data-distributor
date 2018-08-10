@@ -1,3 +1,4 @@
+// @flow
 import Distributor from './Distributor';
 import Customer from './Customer';
 
