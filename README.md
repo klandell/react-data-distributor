@@ -1,6 +1,6 @@
 React Data Distributor
 =====
-An minimalist and unopinionated framework for distributing static data to React components.  
+A minimalist and unopinionated framework for distributing static data to React components.  
 [![npm version](https://badge.fury.io/js/react-data-distributor.svg)](https://badge.fury.io/js/react-data-distributor)
 [![dependencies Status](https://david-dm.org/klandell/react-data-distributor/status.svg)](https://david-dm.org/klandell/react-data-distributor)
 
@@ -8,6 +8,7 @@ With React Data Distributor, you bring your own data and formatting functions an
 
 ## Install
 Install via your favorite node dependency manager
+
 `yarn add react-data-distributor`  
 `npm install react-data-distributor`
 
@@ -73,6 +74,7 @@ const formatters = {
     const words = (str || '').split(' ');
     return words.map(w => `${w.substr(0, 1).toUpperCase()}${w.slice(1)}`).join(' ');
   },
+  default: str => `${(str || '')}`.toLowerCase(),
 };
 
 // render the application with Distributor somewhere near the top of component
@@ -94,14 +96,11 @@ import React, { Fragment } from 'react';
 import { Customer as C } from 'react-data-distributor';
 
 // render your component using the render props pattern.
-// Call value with an optional formatter function to get 
-// a string representation of your value. Use the rawValue
-// property to access the actual value.
-// i.e. `strings.lang.rawValue`
 const Component = () => (
   <C render={parcels => (
     <Fragment>
-      <div>Formatted: {parcels.lang.value('capitalize')}</div>
+      <div>Default Formatter: {parcels.lang.value()}</div>
+      <div>Custom Formatter: {parcels.lang.value('capitalize')}</div>
       <div>Raw: {parcels.lang.rawValue}</div>
     </Fragment>
   )} />
@@ -112,5 +111,5 @@ export default Component;
 
 ## Changelog
 
-#### 1.0.0 &mdash; ???
+#### 1.0.0 &mdash; Aug 13, 2018
 - Initial release

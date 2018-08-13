@@ -33,11 +33,11 @@ class Parcel {
    * @return the formatted parcel value
    */
   value(formatter) {
-    if (formatter) {
-      const formatFn = this[_formatters][formatter] || this[_formatters].default || (s => `${s}`);
-      return formatFn(this.rawValue);
+    let formatFn = formatter ? this[_formatters][formatter] : this[_formatters].default;
+    if (!formatFn) {
+      formatFn = (s => `${s}`);
     }
-    return this.rawValue;
+    return formatFn(this.rawValue);
   }
 }
 
