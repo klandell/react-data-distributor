@@ -34,7 +34,7 @@ class Parcel {
    */
   value(formatter) {
     if (formatter) {
-      const formatFn = this[_formatters][formatter] || (s => `${s}`);
+      const formatFn = this[_formatters][formatter] || this[_formatters].default || (s => `${s}`);
       return formatFn(this.rawValue);
     }
     return this.rawValue;
