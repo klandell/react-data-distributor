@@ -4,15 +4,14 @@ const _items = Symbol('items');
 
 /**
  * Provides a custom error type for actions
- * attempted on an empty stack
+ * attempted on an empty stack. This is a simplified
+ * version of a custom error. Instead of extending Error,
+ * just create a function, as the transpiled version
+ * of native extensions is kind of terrible.
  */
-class EmptyStackError extends Error {
-  constructor() {
-    super();
-    this.name = 'EmptyStackError';
-    this.message = 'Attempted an operation on an empty stack';
-    Object.setPrototypeOf(this, EmptyStackError.prototype);
-  }
+function EmptyStackError() {
+  this.name = 'EmptyStackError';
+  this.message = 'Attempted an operation on an empty stack';
 }
 
 /**
