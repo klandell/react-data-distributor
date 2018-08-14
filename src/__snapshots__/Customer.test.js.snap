@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Customer> should receive a default formatters 1`] = `
+<Distributor
+  data={
+    Object {
+      "bar": Object {
+        "baz": "baz",
+      },
+      "foo": "foo",
+    }
+  }
+  formatters={
+    Object {
+      "default": [Function],
+      "uppercase": [Function],
+    }
+  }
+>
+  <Customer
+    render={[Function]}
+  >
+    <div>
+      <span>
+        f o o
+      </span>
+      <span>
+        b a z
+      </span>
+    </div>
+  </Customer>
+</Distributor>
+`;
+
+exports[`<Customer> should receive a raw value 1`] = `
+<Distributor
+  data={
+    Object {
+      "bar": Object {
+        "baz": "baz",
+      },
+      "foo": "foo",
+    }
+  }
+  formatters={
+    Object {
+      "default": [Function],
+      "uppercase": [Function],
+    }
+  }
+>
+  <Customer
+    render={[Function]}
+  >
+    <div>
+      <span>
+        foo
+      </span>
+      <span>
+        baz
+      </span>
+    </div>
+  </Customer>
+</Distributor>
+`;
+
+exports[`<Customer> should receive formatters 1`] = `
+<Distributor
+  data={
+    Object {
+      "bar": Object {
+        "baz": "baz",
+      },
+      "foo": "foo",
+    }
+  }
+  formatters={
+    Object {
+      "default": [Function],
+      "uppercase": [Function],
+    }
+  }
+>
+  <Customer
+    render={[Function]}
+  >
+    <div>
+      <span>
+        FOO
+      </span>
+      <span>
+        BAZ
+      </span>
+    </div>
+  </Customer>
+</Distributor>
+`;
+
+exports[`<Customer> should receive parcels 1`] = `
+<Distributor
+  data={
+    Object {
+      "bar": Object {
+        "baz": "baz",
+      },
+      "foo": "foo",
+    }
+  }
+  formatters={Object {}}
+>
+  <Customer
+    render={[Function]}
+  >
+    <div>
+      <span>
+        foo
+      </span>
+      <span>
+        baz
+      </span>
+    </div>
+  </Customer>
+</Distributor>
+`;
+
+exports[`<Customer> should render 1`] = `
+<Distributor
+  data={Object {}}
+  formatters={Object {}}
+>
+  <Customer
+    render={[Function]}
+  >
+    <div />
+  </Customer>
+</Distributor>
+`;
