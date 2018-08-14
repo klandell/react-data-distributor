@@ -113,5 +113,8 @@ export default Component;
 
 ## Changelog
 
+#### 1.0.1 &mdash; Aug 14, 2018
+- Unit testing and CI setup
+
 #### 1.0.0 &mdash; Aug 13, 2018
 - Initial release
