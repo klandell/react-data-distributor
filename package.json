@@ -1,6 +1,6 @@
 {
   "name": "react-data-distributor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A minimalist and unopinionated framework for distributing static data to React components.",
   "repository": "github:klandell/react-data-distributor",
   "main": "dist/index.js",
