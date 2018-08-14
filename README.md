@@ -1,6 +1,7 @@
 React Data Distributor
 =====
 A minimalist and unopinionated framework for distributing static data to React components.  
+[![Build Status](https://travis-ci.org/klandell/react-data-distributor.svg?branch=master)](https://travis-ci.org/klandell/react-data-distributor)
 [![npm version](https://badge.fury.io/js/react-data-distributor.svg)](https://badge.fury.io/js/react-data-distributor)
 [![dependencies Status](https://david-dm.org/klandell/react-data-distributor/status.svg)](https://david-dm.org/klandell/react-data-distributor)
 
